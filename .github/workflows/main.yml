@@ -1,0 +1,23 @@
+name: Cloud APK Builder
+on: [push, workflow_dispatch] # Runs on every push or manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Build APK
+        run: bash ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-app-bundle
+          path: app/build/outputs/apk/debug/*.apk
