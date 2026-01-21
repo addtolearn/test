@@ -260,9 +260,4 @@
   
 }
 
-/* 🔴 Remove "Edit with Lovable" badge */
-a[href*="lovable"],
-div[class*="lovable"],
-#lovable-badge {
-  display: none !important;
-}
+
