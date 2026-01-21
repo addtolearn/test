@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core Brand - Trust Navy */
+    --background: 210 20% 98%;
+    --foreground: 220 25% 15%;
+
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* Primary - Deep Navy for Trust */
+    --primary: 220 60% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Soft Blue Gray */
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 220 25% 25%;
+
+    /* Muted */
+    --muted: 210 15% 94%;
+    --muted-foreground: 215 15% 50%;
+
+    /* Accent - Emerald for Growth */
+    --accent: 160 70% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success/Growth Green */
+    --success: 160 70% 40%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning Orange */
+    --warning: 35 95% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 220 60% 25%;
+
+    --radius: 0.75rem;
+
+    /* Category Colors */
+    --category-invest: 160 70% 40%;
+    --category-retirement: 220 60% 50%;
+    --category-loans: 35 95% 55%;
+    --category-tax: 280 60% 50%;
+    --category-utility: 190 70% 45%;
+    --category-calculator: 220 25% 35%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 25% 15% / 0.03);
+    --shadow-card: 0 2px 8px -2px hsl(220 25% 15% / 0.06), 0 4px 16px -4px hsl(220 25% 15% / 0.08);
+    --shadow-elevated: 0 8px 24px -4px hsl(220 25% 15% / 0.1), 0 16px 48px -8px hsl(220 25% 15% / 0.12);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 210 20% 96%;
+
+    --card: 220 15% 16%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 15% 16%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 210 70% 55%;
+    --primary-foreground: 222 25% 10%;
+
+    --secondary: 222 20% 20%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 222 18% 18%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 160 55% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 160 55% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 15% 25%;
+    --input: 222 20% 18%;
+    --ring: 210 70% 55%;
+
+    --category-invest: 160 55% 42%;
+    --category-retirement: 210 60% 55%;
+    --category-loans: 38 85% 55%;
+    --category-tax: 280 50% 58%;
+    --category-utility: 190 60% 52%;
+    --category-calculator: 222 18% 50%;
+
+    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.5);
+    --shadow-elevated: 0 8px 28px -4px hsl(0 0% 0% / 0.6);
+
+    --sidebar-background: 222 30% 8%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 210 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 20% 18%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 222 18% 22%;
+    --sidebar-ring: 210 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+}
+
+@layer components {
+  /* Category Card Variants */
+  .category-card {
+    @apply rounded-2xl p-5 transition-all duration-200 active:scale-[0.98];
+    box-shadow: var(--shadow-card);
+  }
+
+  .category-invest {
+    @apply bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-950/80 dark:to-emerald-900/40;
+  }
+
+  .category-invest .category-icon {
+    @apply bg-emerald-500 text-white;
+  }
+
+  .category-retirement {
+    @apply bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/80 dark:to-blue-900/40;
+  }
+
+  .category-retirement .category-icon {
+    @apply bg-blue-500 text-white;
+  }
+
+  .category-loans {
+    @apply bg-gradient-to-br from-amber-50 to-amber-100/50 dark:from-amber-950/80 dark:to-amber-900/40;
+  }
+
+  .category-loans .category-icon {
+    @apply bg-amber-500 text-white;
+  }
+
+  .category-tax {
+    @apply bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/80 dark:to-purple-900/40;
+  }
+
+  .category-tax .category-icon {
+    @apply bg-purple-500 text-white;
+  }
+
+  .category-utility {
+    @apply bg-gradient-to-br from-cyan-50 to-cyan-100/50 dark:from-cyan-950/80 dark:to-cyan-900/40;
+  }
+
+  .category-utility .category-icon {
+    @apply bg-cyan-500 text-white;
+  }
+
+  .category-calculator {
+    @apply bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-900/80 dark:to-slate-800/40;
+  }
+
+  .category-calculator .category-icon {
+    @apply bg-slate-600 text-white;
+  }
+
+  /* Result Card */
+  .result-card {
+    @apply bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-5;
+  }
+
+  /* Calculator Button */
+  .calc-button {
+    @apply flex items-center justify-center text-2xl font-medium rounded-2xl transition-all duration-150 active:scale-95;
+    aspect-ratio: 1;
+  }
+
+  .calc-button-number {
+    @apply bg-card text-foreground;
+    box-shadow: var(--shadow-card);
+  }
+
+  .calc-button-operator {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .calc-button-equals {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .calc-button-clear {
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  /* Input field styling */
+  .calculator-input {
+    @apply w-full px-4 py-4 text-lg bg-card border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all;
+  }
+
+  /* Bottom Nav */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center justify-center py-2 px-4 text-muted-foreground transition-colors;
+  }
+
+  .nav-item-active {
+    @apply text-primary;
+  }
+  
+}
+
+/* 🔴 Remove "Edit with Lovable" badge */
+a[href*="lovable"],
+div[class*="lovable"],
+#lovable-badge {
+  display: none !important;
+}
